@@ -1,0 +1,464 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA0000010000000000000001 /* CTFGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000010000000000000001 /* CTFGameApp.swift */; };
+		C4BD6B5C2F37AF7300078BC2 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD6B472F37AF7300078BC2 /* AuthViewModel.swift */; };
+		C4BD6B5D2F37AF7300078BC2 /* Flag.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD6B392F37AF7300078BC2 /* Flag.swift */; };
+		C4BD6B5E2F37AF7300078BC2 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD6B562F37AF7300078BC2 /* OnboardingView.swift */; };
+		C4BD6B5F2F37AF7300078BC2 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD6B492F37AF7300078BC2 /* MapViewModel.swift */; };
+		C4BD6B602F37AF7300078BC2 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD6B4A2F37AF7300078BC2 /* ProfileViewModel.swift */; };
+		C4BD6B612F37AF7300078BC2 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD6B452F37AF7300078BC2 /* Logger.swift */; };
+		C4BD6B622F37AF7300078BC2 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD6B352F37AF7300078BC2 /* AppState.swift */; };
+		C4BD6B632F37AF7300078BC2 /* TeamSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD6B572F37AF7300078BC2 /* TeamSelectionView.swift */; };
+		C4BD6B642F37AF7300078BC2 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD6B3D2F37AF7300078BC2 /* APIService.swift */; };
+		C4BD6B652F37AF7300078BC2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD6B442F37AF7300078BC2 /* Extensions.swift */; };
+		C4BD6B662F37AF7300078BC2 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD6B542F37AF7300078BC2 /* MapView.swift */; };
+		C4BD6B672F37AF7300078BC2 /* Capture.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD6B372F37AF7300078BC2 /* Capture.swift */; };
+		C4BD6B682F37AF7300078BC2 /* Defender.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD6B382F37AF7300078BC2 /* Defender.swift */; };
+		C4BD6B692F37AF7300078BC2 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD6B4D2F37AF7300078BC2 /* RegisterView.swift */; };
+		C4BD6B6A2F37AF7300078BC2 /* WebSocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD6B412F37AF7300078BC2 /* WebSocketService.swift */; };
+		C4BD6B6B2F37AF7300078BC2 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD6B592F37AF7300078BC2 /* ProfileView.swift */; };
+		C4BD6B6C2F37AF7300078BC2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD6B432F37AF7300078BC2 /* Constants.swift */; };
+		C4BD6B6D2F37AF7300078BC2 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD6B402F37AF7300078BC2 /* NotificationService.swift */; };
+		C4BD6B6E2F37AF7300078BC2 /* LeaderboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD6B482F37AF7300078BC2 /* LeaderboardViewModel.swift */; };
+		C4BD6B6F2F37AF7300078BC2 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD6B3F2F37AF7300078BC2 /* LocationService.swift */; };
+		C4BD6B702F37AF7300078BC2 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD6B512F37AF7300078BC2 /* LeaderboardView.swift */; };
+		C4BD6B712F37AF7300078BC2 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD6B3A2F37AF7300078BC2 /* Team.swift */; };
+		C4BD6B722F37AF7300078BC2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD6B4C2F37AF7300078BC2 /* LoginView.swift */; };
+		C4BD6B732F37AF7300078BC2 /* FlagDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD6B532F37AF7300078BC2 /* FlagDetailView.swift */; };
+		C4BD6B742F37AF7300078BC2 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD6B3E2F37AF7300078BC2 /* KeychainService.swift */; };
+		C4BD6B752F37AF7300078BC2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD6B3B2F37AF7300078BC2 /* User.swift */; };
+		C4BD6B762F37AF7300078BC2 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD6B4F2F37AF7300078BC2 /* LoadingView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BB0000010000000000000001 /* CTFGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTFGameApp.swift; sourceTree = "<group>"; };
+		C4BD6B352F37AF7300078BC2 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		C4BD6B372F37AF7300078BC2 /* Capture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capture.swift; sourceTree = "<group>"; };
+		C4BD6B382F37AF7300078BC2 /* Defender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defender.swift; sourceTree = "<group>"; };
+		C4BD6B392F37AF7300078BC2 /* Flag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flag.swift; sourceTree = "<group>"; };
+		C4BD6B3A2F37AF7300078BC2 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		C4BD6B3B2F37AF7300078BC2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C4BD6B3D2F37AF7300078BC2 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		C4BD6B3E2F37AF7300078BC2 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		C4BD6B3F2F37AF7300078BC2 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		C4BD6B402F37AF7300078BC2 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		C4BD6B412F37AF7300078BC2 /* WebSocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketService.swift; sourceTree = "<group>"; };
+		C4BD6B432F37AF7300078BC2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C4BD6B442F37AF7300078BC2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		C4BD6B452F37AF7300078BC2 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		C4BD6B472F37AF7300078BC2 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		C4BD6B482F37AF7300078BC2 /* LeaderboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewModel.swift; sourceTree = "<group>"; };
+		C4BD6B492F37AF7300078BC2 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		C4BD6B4A2F37AF7300078BC2 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		C4BD6B4C2F37AF7300078BC2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		C4BD6B4D2F37AF7300078BC2 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		C4BD6B4F2F37AF7300078BC2 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		C4BD6B512F37AF7300078BC2 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
+		C4BD6B532F37AF7300078BC2 /* FlagDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagDetailView.swift; sourceTree = "<group>"; };
+		C4BD6B542F37AF7300078BC2 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		C4BD6B562F37AF7300078BC2 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		C4BD6B572F37AF7300078BC2 /* TeamSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamSelectionView.swift; sourceTree = "<group>"; };
+		C4BD6B592F37AF7300078BC2 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		CC0000010000000000000001 /* CTFGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CTFGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD0000010000000000000001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		C4BD6B362F37AF7300078BC2 /* App 2 */ = {
+			isa = PBXGroup;
+			children = (
+				C4BD6B352F37AF7300078BC2 /* AppState.swift */,
+			);
+			path = "App 2";
+			sourceTree = "<group>";
+		};
+		C4BD6B3C2F37AF7300078BC2 /* Models 2 */ = {
+			isa = PBXGroup;
+			children = (
+				C4BD6B372F37AF7300078BC2 /* Capture.swift */,
+				C4BD6B382F37AF7300078BC2 /* Defender.swift */,
+				C4BD6B392F37AF7300078BC2 /* Flag.swift */,
+				C4BD6B3A2F37AF7300078BC2 /* Team.swift */,
+				C4BD6B3B2F37AF7300078BC2 /* User.swift */,
+			);
+			path = "Models 2";
+			sourceTree = "<group>";
+		};
+		C4BD6B422F37AF7300078BC2 /* Services 2 */ = {
+			isa = PBXGroup;
+			children = (
+				C4BD6B3D2F37AF7300078BC2 /* APIService.swift */,
+				C4BD6B3E2F37AF7300078BC2 /* KeychainService.swift */,
+				C4BD6B3F2F37AF7300078BC2 /* LocationService.swift */,
+				C4BD6B402F37AF7300078BC2 /* NotificationService.swift */,
+				C4BD6B412F37AF7300078BC2 /* WebSocketService.swift */,
+			);
+			path = "Services 2";
+			sourceTree = "<group>";
+		};
+		C4BD6B462F37AF7300078BC2 /* Utilities 2 */ = {
+			isa = PBXGroup;
+			children = (
+				C4BD6B432F37AF7300078BC2 /* Constants.swift */,
+				C4BD6B442F37AF7300078BC2 /* Extensions.swift */,
+				C4BD6B452F37AF7300078BC2 /* Logger.swift */,
+			);
+			path = "Utilities 2";
+			sourceTree = "<group>";
+		};
+		C4BD6B4B2F37AF7300078BC2 /* ViewModels 2 */ = {
+			isa = PBXGroup;
+			children = (
+				C4BD6B472F37AF7300078BC2 /* AuthViewModel.swift */,
+				C4BD6B482F37AF7300078BC2 /* LeaderboardViewModel.swift */,
+				C4BD6B492F37AF7300078BC2 /* MapViewModel.swift */,
+				C4BD6B4A2F37AF7300078BC2 /* ProfileViewModel.swift */,
+			);
+			path = "ViewModels 2";
+			sourceTree = "<group>";
+		};
+		C4BD6B4E2F37AF7300078BC2 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				C4BD6B4C2F37AF7300078BC2 /* LoginView.swift */,
+				C4BD6B4D2F37AF7300078BC2 /* RegisterView.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		C4BD6B502F37AF7300078BC2 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				C4BD6B4F2F37AF7300078BC2 /* LoadingView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		C4BD6B522F37AF7300078BC2 /* Leaderboard */ = {
+			isa = PBXGroup;
+			children = (
+				C4BD6B512F37AF7300078BC2 /* LeaderboardView.swift */,
+			);
+			path = Leaderboard;
+			sourceTree = "<group>";
+		};
+		C4BD6B552F37AF7300078BC2 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				C4BD6B532F37AF7300078BC2 /* FlagDetailView.swift */,
+				C4BD6B542F37AF7300078BC2 /* MapView.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		C4BD6B582F37AF7300078BC2 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				C4BD6B562F37AF7300078BC2 /* OnboardingView.swift */,
+				C4BD6B572F37AF7300078BC2 /* TeamSelectionView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		C4BD6B5A2F37AF7300078BC2 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C4BD6B592F37AF7300078BC2 /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		C4BD6B5B2F37AF7300078BC2 /* Views 2 */ = {
+			isa = PBXGroup;
+			children = (
+				C4BD6B4E2F37AF7300078BC2 /* Auth */,
+				C4BD6B502F37AF7300078BC2 /* Components */,
+				C4BD6B522F37AF7300078BC2 /* Leaderboard */,
+				C4BD6B552F37AF7300078BC2 /* Map */,
+				C4BD6B582F37AF7300078BC2 /* Onboarding */,
+				C4BD6B5A2F37AF7300078BC2 /* Profile */,
+			);
+			path = "Views 2";
+			sourceTree = "<group>";
+		};
+		EE0000010000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				FF0000010000000000000001 /* CTFGame */,
+				FF0000010000000000000002 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FF0000010000000000000001 /* CTFGame */ = {
+			isa = PBXGroup;
+			children = (
+				BB0000010000000000000001 /* CTFGameApp.swift */,
+				DD0000010000000000000001 /* Info.plist */,
+				C4BD6B362F37AF7300078BC2 /* App 2 */,
+				C4BD6B3C2F37AF7300078BC2 /* Models 2 */,
+				C4BD6B422F37AF7300078BC2 /* Services 2 */,
+				C4BD6B462F37AF7300078BC2 /* Utilities 2 */,
+				C4BD6B4B2F37AF7300078BC2 /* ViewModels 2 */,
+				C4BD6B5B2F37AF7300078BC2 /* Views 2 */,
+			);
+			path = CTFGame;
+			sourceTree = "<group>";
+		};
+		FF0000010000000000000002 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CC0000010000000000000001 /* CTFGame.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		TT0000010000000000000001 /* CTFGame */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CL0000010000000000000001 /* Build configuration list for PBXNativeTarget "CTFGame" */;
+			buildPhases = (
+				BP0000010000000000000001 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CTFGame;
+			productName = CTFGame;
+			productReference = CC0000010000000000000001 /* CTFGame.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		PR0000010000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 2620;
+			};
+			buildConfigurationList = CL0000010000000000000002 /* Build configuration list for PBXProject "CTFGame" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EE0000010000000000000001;
+			productRefGroup = FF0000010000000000000002 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				TT0000010000000000000001 /* CTFGame */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BP0000010000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA0000010000000000000001 /* CTFGameApp.swift in Sources */,
+				C4BD6B5C2F37AF7300078BC2 /* AuthViewModel.swift in Sources */,
+				C4BD6B5D2F37AF7300078BC2 /* Flag.swift in Sources */,
+				C4BD6B5E2F37AF7300078BC2 /* OnboardingView.swift in Sources */,
+				C4BD6B5F2F37AF7300078BC2 /* MapViewModel.swift in Sources */,
+				C4BD6B602F37AF7300078BC2 /* ProfileViewModel.swift in Sources */,
+				C4BD6B612F37AF7300078BC2 /* Logger.swift in Sources */,
+				C4BD6B622F37AF7300078BC2 /* AppState.swift in Sources */,
+				C4BD6B632F37AF7300078BC2 /* TeamSelectionView.swift in Sources */,
+				C4BD6B642F37AF7300078BC2 /* APIService.swift in Sources */,
+				C4BD6B652F37AF7300078BC2 /* Extensions.swift in Sources */,
+				C4BD6B662F37AF7300078BC2 /* MapView.swift in Sources */,
+				C4BD6B672F37AF7300078BC2 /* Capture.swift in Sources */,
+				C4BD6B682F37AF7300078BC2 /* Defender.swift in Sources */,
+				C4BD6B692F37AF7300078BC2 /* RegisterView.swift in Sources */,
+				C4BD6B6A2F37AF7300078BC2 /* WebSocketService.swift in Sources */,
+				C4BD6B6B2F37AF7300078BC2 /* ProfileView.swift in Sources */,
+				C4BD6B6C2F37AF7300078BC2 /* Constants.swift in Sources */,
+				C4BD6B6D2F37AF7300078BC2 /* NotificationService.swift in Sources */,
+				C4BD6B6E2F37AF7300078BC2 /* LeaderboardViewModel.swift in Sources */,
+				C4BD6B6F2F37AF7300078BC2 /* LocationService.swift in Sources */,
+				C4BD6B702F37AF7300078BC2 /* LeaderboardView.swift in Sources */,
+				C4BD6B712F37AF7300078BC2 /* Team.swift in Sources */,
+				C4BD6B722F37AF7300078BC2 /* LoginView.swift in Sources */,
+				C4BD6B732F37AF7300078BC2 /* FlagDetailView.swift in Sources */,
+				C4BD6B742F37AF7300078BC2 /* KeychainService.swift in Sources */,
+				C4BD6B752F37AF7300078BC2 /* User.swift in Sources */,
+				C4BD6B762F37AF7300078BC2 /* LoadingView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		BC0000010000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = CTFGame/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ctfgame.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		BC0000010000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = CTFGame/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ctfgame.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		BC0000010000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		BC0000010000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CL0000010000000000000001 /* Build configuration list for PBXNativeTarget "CTFGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC0000010000000000000001 /* Debug */,
+				BC0000010000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CL0000010000000000000002 /* Build configuration list for PBXProject "CTFGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC0000010000000000000003 /* Debug */,
+				BC0000010000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = PR0000010000000000000001 /* Project object */;
+}

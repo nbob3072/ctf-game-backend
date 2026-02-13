@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTF Game - Concept Mockup</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .mockup-container {
+            max-width: 1400px;
+            width: 100%;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #00ff88;
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #8899aa;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+        
+        .screens {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .phone {
+            background: #1a1a1a;
+            border-radius: 40px;
+            padding: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 2px solid #333;
+        }
+        
+        .notch {
+            background: #000;
+            height: 30px;
+            border-radius: 20px;
+            margin: 0 auto 10px;
+            width: 150px;
+        }
+        
+        .screen {
+            background: #0f1419;
+            border-radius: 25px;
+            height: 650px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .status-bar {
+            background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, transparent 100%);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        /* Map Screen */
+        .map-bg {
+            background: linear-gradient(135deg, #1a2332 0%, #0a0e1a 100%);
+            height: 100%;
+            position: relative;
+        }
+        
+        .map-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(0, 255, 136, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 136, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.3;
+        }
+        
+        .flag-marker {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 20px currentColor;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+        }
+        
+        .flag-titans { background: #ff3366; color: #fff; top: 30%; left: 25%; }
+        .flag-guardians { background: #3366ff; color: #fff; top: 45%; left: 60%; }
+        .flag-phantoms { background: #aa33ff; color: #fff; top: 60%; left: 35%; }
+        .flag-neutral { background: #666; color: #fff; top: 70%; left: 70%; }
+        
+        .map-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 30px 20px;
+        }
+        
+        .map-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            color: #00ff88;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .stat-label {
+            color: #8899aa;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        
+        .capture-btn {
+            background: linear-gradient(135deg, #00ff88 0%, #00cc66 100%);
+            color: #0a0e27;
+            border: none;
+            padding: 15px;
+            border-radius: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            width: 100%;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 255, 136, 0.3);
+        }
+        
+        /* Faction Screen */
+        .faction-bg {
+            background: linear-gradient(135deg, #1a1f3a 0%, #0a0e27 100%);
+            height: 100%;
+            padding: 80px 20px 20px;
+        }
+        
+        .faction-title {
+            color: #fff;
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .faction-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 2px solid;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .faction-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px currentColor;
+        }
+        
+        .faction-titans { border-color: #ff3366; }
+        .faction-guardians { border-color: #3366ff; }
+        .faction-phantoms { border-color: #aa33ff; }
+        
+        .faction-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .faction-desc {
+            color: #8899aa;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        /* Capture Screen */
+        .capture-bg {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            height: 100%;
+            padding: 80px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .flag-giant {
+            font-size: 120px;
+            margin-bottom: 30px;
+            animation: bounce 1s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .capture-title {
+            color: #fff;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .capture-subtitle {
+            color: #8899aa;
+            font-size: 18px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .progress-bar {
+            width: 80%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00ff88 0%, #00cc66 100%);
+            width: 65%;
+            animation: glow 2s infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 136, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(0, 255, 136, 0.8); }
+        }
+        
+        /* Leaderboard Screen */
+        .leaderboard-bg {
+            background: linear-gradient(135deg, #1a1f3a 0%, #0a0e27 100%);
+            height: 100%;
+            padding: 80px 20px 20px;
+        }
+        
+        .leaderboard-title {
+            color: #fff;
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .leaderboard-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: none;
+            color: #8899aa;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .tab.active {
+            background: #00ff88;
+            color: #0a0e27;
+        }
+        
+        .rank-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .rank-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00ff88;
+            width: 40px;
+        }
+        
+        .rank-medal {
+            font-size: 30px;
+        }
+        
+        .rank-info {
+            flex: 1;
+        }
+        
+        .rank-name {
+            color: #fff;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .rank-faction {
+            color: #8899aa;
+            font-size: 12px;
+        }
+        
+        .rank-score {
+            color: #00ff88;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .screen-label {
+            text-align: center;
+            color: #8899aa;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="mockup-container">
+        <h1>⚔️ CTF Game</h1>
+        <p class="subtitle">Command Your City. Capture the Flag. Conquer the Leaderboard.</p>
+        
+        <div class="screens">
+            <!-- Map Screen -->
+            <div>
+                <div class="phone">
+                    <div class="notch"></div>
+                    <div class="screen">
+                        <div class="map-bg">
+                            <div class="status-bar">
+                                <span>9:41</span>
+                                <span>🔋 86%</span>
+                            </div>
+                            <div class="map-grid"></div>
+                            <div class="flag-marker flag-titans">🚩</div>
+                            <div class="flag-marker flag-guardians">🚩</div>
+                            <div class="flag-marker flag-phantoms">🚩</div>
+                            <div class="flag-marker flag-neutral">🚩</div>
+                            <div class="map-overlay">
+                                <div class="map-stats">
+                                    <div class="stat">
+                                        <div class="stat-value">12</div>
+                                        <div class="stat-label">Captured</div>
+                                    </div>
+                                    <div class="stat">
+                                        <div class="stat-value">47</div>
+                                        <div class="stat-label">Nearby</div>
+                                    </div>
+                                    <div class="stat">
+                                        <div class="stat-value">8.2km</div>
+                                        <div class="stat-label">Traveled</div>
+                                    </div>
+                                </div>
+                                <button class="capture-btn">📍 Capture Nearest Flag</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="screen-label">Map View - Hunt Flags in Your City</p>
+            </div>
+            
+            <!-- Faction Selection -->
+            <div>
+                <div class="phone">
+                    <div class="notch"></div>
+                    <div class="screen">
+                        <div class="faction-bg">
+                            <div class="status-bar">
+                                <span>9:41</span>
+                                <span>🔋 86%</span>
+                            </div>
+                            <h2 class="faction-title">Choose Your Faction</h2>
+                            <div class="faction-card faction-titans">
+                                <div class="faction-name" style="color: #ff3366;">⚔️ Titans</div>
+                                <p class="faction-desc">Aggressive conquerors who dominate through raw power and territorial control</p>
+                            </div>
+                            <div class="faction-card faction-guardians">
+                                <div class="faction-name" style="color: #3366ff;">🛡️ Guardians</div>
+                                <p class="faction-desc">Defensive strategists who protect and fortify captured zones</p>
+                            </div>
+                            <div class="faction-card faction-phantoms">
+                                <div class="faction-name" style="color: #aa33ff;">👻 Phantoms</div>
+                                <p class="faction-desc">Stealth operatives who strike from shadows with surgical precision</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="screen-label">Faction Selection - Pick Your Alliance</p>
+            </div>
+            
+            <!-- Capture Screen -->
+            <div>
+                <div class="phone">
+                    <div class="notch"></div>
+                    <div class="screen">
+                        <div class="capture-bg">
+                            <div class="status-bar">
+                                <span>9:41</span>
+                                <span>🔋 86%</span>
+                            </div>
+                            <div class="flag-giant">🚩</div>
+                            <h2 class="capture-title">Capturing Flag</h2>
+                            <p class="capture-subtitle">Stay within 30m radius...</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                            <button class="capture-btn">⚡ Boost Capture (2x Speed)</button>
+                        </div>
+                    </div>
+                </div>
+                <p class="screen-label">Capture Mode - Claim Your Territory</p>
+            </div>
+            
+            <!-- Leaderboard -->
+            <div>
+                <div class="phone">
+                    <div class="notch"></div>
+                    <div class="screen">
+                        <div class="leaderboard-bg">
+                            <div class="status-bar">
+                                <span>9:41</span>
+                                <span>🔋 86%</span>
+                            </div>
+                            <h2 class="leaderboard-title">🏆 Leaderboard</h2>
+                            <div class="leaderboard-tabs">
+                                <button class="tab active">Global</button>
+                                <button class="tab">City</button>
+                                <button class="tab">Faction</button>
+                            </div>
+                            <div class="rank-item">
+                                <span class="rank-medal">🥇</span>
+                                <div class="rank-info">
+                                    <div class="rank-name">ShadowHunter</div>
+                                    <div class="rank-faction">Phantoms • NYC</div>
+                                </div>
+                                <div class="rank-score">2,847</div>
+                            </div>
+                            <div class="rank-item">
+                                <span class="rank-medal">🥈</span>
+                                <div class="rank-info">
+                                    <div class="rank-name">IronWall</div>
+                                    <div class="rank-faction">Guardians • Chicago</div>
+                                </div>
+                                <div class="rank-score">2,634</div>
+                            </div>
+                            <div class="rank-item">
+                                <span class="rank-medal">🥉</span>
+                                <div class="rank-info">
+                                    <div class="rank-name">WarKing</div>
+                                    <div class="rank-faction">Titans • Austin</div>
+                                </div>
+                                <div class="rank-score">2,419</div>
+                            </div>
+                            <div class="rank-item">
+                                <div class="rank-number">4</div>
+                                <div class="rank-info">
+                                    <div class="rank-name">GhostRider</div>
+                                    <div class="rank-faction">Phantoms • SF</div>
+                                </div>
+                                <div class="rank-score">2,201</div>
+                            </div>
+                            <div class="rank-item">
+                                <div class="rank-number">5</div>
+                                <div class="rank-info">
+                                    <div class="rank-name">You</div>
+                                    <div class="rank-faction">Titans • NYC</div>
+                                </div>
+                                <div class="rank-score">1,987</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="screen-label">Leaderboard - Compete for Glory</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1a3e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#6666ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3333cc;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1024" height="1024" fill="url(#bgGrad2)" rx="180"/>
+  
+  <!-- Shield -->
+  <path d="M 512 180 C 390 180 290 220 290 220 L 290 480 C 290 640 512 820 512 820 C 512 820 734 640 734 480 L 734 220 C 734 220 634 180 512 180 Z" 
+        fill="url(#shieldGrad)" stroke="#1a1a66" stroke-width="12"/>
+  
+  <!-- Shield inner line -->
+  <path d="M 512 220 C 410 220 330 250 330 250 L 330 480 C 330 620 512 770 512 770 C 512 770 694 620 694 480 L 694 250 C 694 250 614 220 512 220 Z" 
+        fill="none" stroke="#8888ff" stroke-width="4" opacity="0.4"/>
+  
+  <!-- Flag pole -->
+  <rect x="506" y="380" width="12" height="240" fill="#444466"/>
+  
+  <!-- Flag -->
+  <path d="M 518 380 L 518 480 L 660 430 L 518 380 Z" fill="#ff5522"/>
+  <path d="M 518 400 L 518 460 L 620 430 Z" fill="#ffaa44" opacity="0.6"/>
+</svg>

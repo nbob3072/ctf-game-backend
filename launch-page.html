@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Command your city. Capture the flag. Conquer the leaderboard. The ultimate location-based battle royale is here.">
+    <title>CTF - Command Your City | Location-Based Battle Royale</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --titans: #ff3366;
+            --guardians: #3366ff;
+            --phantoms: #aa33ff;
+            --neon: #00ff88;
+            --dark: #0a0e27;
+            --darker: #050711;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--darker);
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        /* Sticky Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--neon);
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+        }
+        
+        .cta-btn {
+            background: linear-gradient(135deg, var(--neon) 0%, #00cc66 100%);
+            color: var(--dark);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0, 255, 136, 0.3);
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 255, 136, 0.5);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 20px 80px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+        }
+        
+        .hero-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(0, 255, 136, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 136, 0.05) 1px, transparent 1px);
+            background-size: 100px 100px;
+            opacity: 0.3;
+            animation: gridScroll 20s linear infinite;
+        }
+        
+        @keyframes gridScroll {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100px); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+        }
+        
+        .hero-title {
+            font-size: 72px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, var(--neon) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 28px;
+            color: #8899aa;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+        
+        .hero-cta-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-primary {
+            background: linear-gradient(135deg, var(--neon) 0%, #00cc66 100%);
+            color: var(--dark);
+            font-size: 20px;
+            padding: 18px 40px;
+        }
+        
+        .cta-secondary {
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--neon);
+            padding: 16px 40px;
+            font-size: 20px;
+        }
+        
+        .cta-secondary:hover {
+            background: rgba(0, 255, 136, 0.1);
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 60px;
+            justify-content: center;
+            margin-top: 60px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: bold;
+            color: var(--neon);
+            text-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
+        }
+        
+        .stat-label {
+            font-size: 16px;
+            color: #8899aa;
+            margin-top: 10px;
+        }
+        
+        /* Factions Section */
+        .factions {
+            padding: 120px 20px;
+            background: linear-gradient(180deg, var(--dark) 0%, var(--darker) 100%);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 56px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 20px;
+            color: #8899aa;
+            margin-bottom: 60px;
+        }
+        
+        .faction-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+        
+        .faction-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 30px;
+            padding: 50px 40px;
+            text-align: center;
+            border: 3px solid;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .faction-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, currentColor 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        
+        .faction-card:hover::before {
+            opacity: 0.1;
+        }
+        
+        .faction-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px currentColor;
+        }
+        
+        .faction-titans { border-color: var(--titans); color: var(--titans); }
+        .faction-guardians { border-color: var(--guardians); color: var(--guardians); }
+        .faction-phantoms { border-color: var(--phantoms); color: var(--phantoms); }
+        
+        .faction-icon {
+            font-size: 80px;
+            margin-bottom: 30px;
+        }
+        
+        .faction-name {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .faction-desc {
+            color: #8899aa;
+            font-size: 18px;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 120px 20px;
+            background: var(--darker);
+        }
+        
+        .feature-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 40px 30px;
+            border: 1px solid rgba(0, 255, 136, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .feature-card:hover {
+            border-color: var(--neon);
+            background: rgba(0, 255, 136, 0.05);
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--neon);
+        }
+        
+        .feature-desc {
+            color: #8899aa;
+            line-height: 1.6;
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            padding: 120px 20px;
+            background: linear-gradient(180deg, var(--darker) 0%, var(--dark) 100%);
+        }
+        
+        .steps {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .step {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 50px;
+            align-items: center;
+        }
+        
+        .step-number {
+            font-size: 72px;
+            font-weight: bold;
+            color: var(--neon);
+            opacity: 0.3;
+            min-width: 100px;
+        }
+        
+        .step-content h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .step-content p {
+            color: #8899aa;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        
+        /* Cities Section */
+        .cities {
+            padding: 120px 20px;
+            background: var(--darker);
+        }
+        
+        .city-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+        }
+        
+        .city-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 2px solid rgba(0, 255, 136, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .city-card:hover {
+            border-color: var(--neon);
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(0, 255, 136, 0.2);
+        }
+        
+        .city-name {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .city-flags {
+            color: var(--neon);
+            font-size: 18px;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 120px 20px;
+            background: linear-gradient(180deg, var(--darker) 0%, var(--dark) 100%);
+        }
+        
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0, 255, 136, 0.1);
+        }
+        
+        .faq-question {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--neon);
+        }
+        
+        .faq-answer {
+            color: #8899aa;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+        
+        /* Newsletter Section */
+        .newsletter {
+            padding: 120px 20px;
+            background: var(--darker);
+            text-align: center;
+        }
+        
+        .newsletter-form {
+            max-width: 600px;
+            margin: 40px auto 0;
+            display: flex;
+            gap: 15px;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 18px 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(0, 255, 136, 0.2);
+            border-radius: 30px;
+            color: #fff;
+            font-size: 16px;
+        }
+        
+        .newsletter-input::placeholder {
+            color: #8899aa;
+        }
+        
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--neon);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 60px 20px;
+            background: var(--darker);
+            text-align: center;
+            border-top: 1px solid rgba(0, 255, 136, 0.1);
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-link {
+            color: #8899aa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-link:hover {
+            color: var(--neon);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .social-link {
+            font-size: 32px;
+            transition: transform 0.3s;
+        }
+        
+        .social-link:hover {
+            transform: scale(1.2);
+        }
+        
+        .copyright {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 48px;
+            }
+            
+            .hero-subtitle {
+                font-size: 20px;
+            }
+            
+            .section-title {
+                font-size: 40px;
+            }
+            
+            .hero-stats {
+                gap: 30px;
+            }
+            
+            .stat-number {
+                font-size: 36px;
+            }
+            
+            .header {
+                padding: 15px 20px;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .step {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .step-number {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky Header -->
+    <header class="header">
+        <div class="logo">⚔️ CTF</div>
+        <button class="cta-btn" onclick="scrollToCTA()">Download Now</button>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-grid"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Command Your City.<br>Capture the Flag.<br>Conquer the Leaderboard.</h1>
+            <p class="hero-subtitle">The ultimate location-based battle royale. Hunt flags across your city, build your faction, and dominate the streets.</p>
+            <div class="hero-cta-group">
+                <button class="cta-btn cta-primary">📱 Download for iOS</button>
+                <button class="cta-btn cta-secondary">🤖 Download for Android</button>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">40+</div>
+                    <div class="stat-label">Flags per City</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Launch Cities</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Factions</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Factions Section -->
+    <section class="factions">
+        <h2 class="section-title">Choose Your Faction</h2>
+        <p class="section-subtitle">Three paths. One mission. Total domination.</p>
+        <div class="faction-grid">
+            <div class="faction-card faction-titans">
+                <div class="faction-icon">⚔️</div>
+                <h3 class="faction-name">Titans</h3>
+                <p class="faction-desc">Aggressive conquerors who dominate through raw power and territorial control. Strike fast, capture hard, and never back down.</p>
+            </div>
+            <div class="faction-card faction-guardians">
+                <div class="faction-icon">🛡️</div>
+                <h3 class="faction-name">Guardians</h3>
+                <p class="faction-desc">Defensive strategists who protect and fortify captured zones. Build impenetrable defenses and outlast your enemies.</p>
+            </div>
+            <div class="faction-card faction-phantoms">
+                <div class="faction-icon">👻</div>
+                <h3 class="faction-name">Phantoms</h3>
+                <p class="faction-desc">Stealth operatives who strike from shadows with surgical precision. Invisible, unpredictable, unstoppable.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2 class="section-title">Game Features</h2>
+        <p class="section-subtitle">Built for real-world strategy and competition</p>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🗺️</div>
+                <h3 class="feature-title">GPS-Based Gameplay</h3>
+                <p class="feature-desc">Hunt flags in the real world using GPS. Get within 30m to claim your prize.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3 class="feature-title">Real-Time Battles</h3>
+                <p class="feature-desc">Compete with players in your city for control of flags. Every capture matters.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏆</div>
+                <h3 class="feature-title">Global Leaderboards</h3>
+                <p class="feature-desc">Climb the ranks locally and globally. Prove you're the best in your city—or the world.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3 class="feature-title">Team-Based Factions</h3>
+                <p class="feature-desc">Join Titans, Guardians, or Phantoms. Fight alongside your faction for glory.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📍</div>
+                <h3 class="feature-title">Urban Exploration</h3>
+                <p class="feature-desc">Discover hidden corners of your city. Flags are everywhere—you just need to find them.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3 class="feature-title">Strategic Gameplay</h3>
+                <p class="feature-desc">Plan your route, boost captures, defend zones. Every move is tactical.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-subtitle">Three steps to domination</p>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>📲 Download & Choose</h3>
+                    <p>Download the app, create your account, and choose your faction. Titans, Guardians, or Phantoms—pick your path.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>🗺️ Hunt Flags</h3>
+                    <p>Open the map and see flags across your city. Navigate to them in the real world and get within 30m to start capturing.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>🏆 Dominate the Leaderboard</h3>
+                    <p>Capture more flags, boost your score, and climb the rankings. Compete locally or challenge the world.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cities Section -->
+    <section class="cities">
+        <h2 class="section-title">Launch Cities</h2>
+        <p class="section-subtitle">The battle begins in four major cities</p>
+        <div class="city-grid">
+            <div class="city-card">
+                <h3 class="city-name">🗽 NYC</h3>
+                <p class="city-flags">20 Flags</p>
+            </div>
+            <div class="city-card">
+                <h3 class="city-name">🌆 Chicago</h3>
+                <p class="city-flags">15 Flags</p>
+            </div>
+            <div class="city-card">
+                <h3 class="city-name">🎸 Austin</h3>
+                <p class="city-flags">10 Flags</p>
+            </div>
+            <div class="city-card">
+                <h3 class="city-name">🌉 San Francisco</h3>
+                <p class="city-flags">15 Flags</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <h3 class="faq-question">How does GPS gameplay work?</h3>
+                <p class="faq-answer">The app uses your phone's GPS to show flags on a map. Walk to a flag location in the real world, get within 30 meters, and hold the position to capture it. The closer you are, the faster you capture.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">What devices are supported?</h3>
+                <p class="faq-answer">CTF works on iOS 14+ (iPhone 8 and newer) and Android 8+ devices with GPS and internet connectivity. A stable data connection is required for real-time gameplay.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">Is the game free?</h3>
+                <p class="faq-answer">Yes! CTF is free to download and play. Optional in-app purchases allow you to boost capture speed, unlock cosmetic items, and support your faction.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">Can I play anywhere?</h3>
+                <p class="faq-answer">At launch, CTF is available in NYC, Chicago, Austin, and San Francisco. More cities are coming soon based on player demand!</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">How do factions work?</h3>
+                <p class="faq-answer">Choose Titans (aggressive), Guardians (defensive), or Phantoms (stealth) when you start. Your faction choice affects gameplay bonuses and team leaderboards. You can't switch factions once chosen.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">Is multiplayer real-time?</h3>
+                <p class="faq-answer">Yes! All captures, battles, and leaderboard updates happen in real-time. When you capture a flag, other players in your city see the change immediately.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter" id="cta">
+        <h2 class="section-title">Ready to Dominate?</h2>
+        <p class="section-subtitle">Download now and join the battle. Your city is waiting.</p>
+        <div class="hero-cta-group">
+            <button class="cta-btn cta-primary">📱 Download for iOS</button>
+            <button class="cta-btn cta-secondary">🤖 Download for Android</button>
+        </div>
+        <p class="section-subtitle" style="margin-top: 60px;">Or get notified when we launch in your city:</p>
+        <form class="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+            <button type="submit" class="cta-btn">Notify Me</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#" class="footer-link">Privacy Policy</a>
+            <a href="#" class="footer-link">Terms of Service</a>
+            <a href="#" class="footer-link">Support</a>
+            <a href="#" class="footer-link">Press Kit</a>
+        </div>
+        <div class="social-links">
+            <a href="#" class="social-link">𝕏</a>
+            <a href="#" class="social-link">📷</a>
+            <a href="#" class="social-link">🎮</a>
+        </div>
+        <p class="copyright">&copy; 2026 CTF. All rights reserved. Command your city.</p>
+    </footer>
+
+    <script>
+        function scrollToCTA() {
+            document.getElementById('cta').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Add smooth scroll to all CTA buttons
+        document.querySelectorAll('.cta-primary, .cta-secondary').forEach(btn => {
+            btn.addEventListener('click', scrollToCTA);
+        });
+        
+        // Newsletter form handling
+        document.querySelector('.newsletter-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thanks for signing up! We\'ll notify you when CTF launches in your city. 🚀');
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
