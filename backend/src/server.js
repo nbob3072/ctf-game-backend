@@ -70,9 +70,13 @@ app.listen(PORT, () => {
   console.log(`   Health check: http://localhost:${PORT}/health`);
 });
 
-// Start WebSocket server
-const wsServer = new WebSocketServer(WS_PORT);
-console.log(`🔌 WebSocket server running on port ${WS_PORT}`);
+// Start WebSocket server (only if Redis is available)
+if (process.env.REDIS_URL && process.env.REDIS_URL !== 'redis://localhost:6379') {
+  const wsServer = new WebSocketServer(WS_PORT);
+  console.log(`🔌 WebSocket server running on port ${WS_PORT}`);
+} else {
+  console.log(`⚠️  WebSocket server disabled (Redis not configured)`);
+}
 
 // Graceful shutdown
 process.on('SIGTERM', () => {
