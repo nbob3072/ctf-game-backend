@@ -91,17 +91,17 @@ router.post(
 router.post(
   '/login',
   validateRequest({
-    email: { required: true },
+    email: { required: true }, // Can be email or username
     password: { required: true },
   }),
   async (req, res) => {
     try {
       const { email, password } = req.body;
 
-      // Find user
+      // Find user by email or username
       const result = await db.query(
         `SELECT id, username, email, password_hash, team_id, level, xp
-         FROM users WHERE email = $1`,
+         FROM users WHERE email = $1 OR username = $1`,
         [email]
       );
 
