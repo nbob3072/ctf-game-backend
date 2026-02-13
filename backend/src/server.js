@@ -41,13 +41,13 @@ app.get('/health', (req, res) => {
   });
 });
 
-// API routes
-app.use('/auth', authRoutes);
-app.use('/auth', passwordResetRoutes);
-app.use('/teams', teamsRoutes);
-app.use('/flags', flagsRoutes);
-app.use('/leaderboard', leaderboardRoutes);
-app.use('/account', accountRoutes);
+// API routes - mounted under /api prefix
+app.use('/api/auth', authRoutes);
+app.use('/api/auth', passwordResetRoutes);
+app.use('/api/teams', teamsRoutes);
+app.use('/api/flags', flagsRoutes);
+app.use('/api/leaderboard', leaderboardRoutes);
+app.use('/api/account', accountRoutes);
 
 // 404 handler
 app.use((req, res) => {
