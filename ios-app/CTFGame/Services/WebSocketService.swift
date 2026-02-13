@@ -4,8 +4,9 @@ class WebSocketService: NSObject {
     static let shared = WebSocketService()
     
     // MARK: - Configuration
-    // Backend WebSocket running on local network
-    private let wsURL = "ws://192.168.9.206:3001"
+    // WebSocket disabled in production (no Redis on Railway free tier)
+    // When Redis is added, use: wss://ctf-game-backend-production.up.railway.app
+    private let wsURL = "wss://ctf-game-backend-production.up.railway.app"
     
     private var webSocketTask: URLSessionWebSocketTask?
     private var urlSession: URLSession?

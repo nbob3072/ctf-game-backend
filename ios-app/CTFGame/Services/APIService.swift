@@ -4,8 +4,8 @@ class APIService {
     static let shared = APIService()
     
     // MARK: - Configuration
-    // Backend running on local network
-    private let baseURL = "http://192.168.9.206:3000"
+    // Production backend on Railway
+    private let baseURL = "https://ctf-game-backend-production.up.railway.app/api"
     
     private let session: URLSession
     private let decoder: JSONDecoder
