@@ -1,0 +1,130 @@
+CTF Game - Documentation Map
+============================
+
+📂 ~/projects/ctf-game/
+
+START HERE (Read in this order):
+├── 🚀 START_HERE.md ..................... Quick fix guide (read first!)
+├── 🔥 IMMEDIATE_FIXES.md ................ 3 options to fix database
+├── 📊 REVIEW_SUMMARY.txt ................ Executive summary (this review)
+└── ✅ PROJECT_CHECKLIST.md .............. Complete task list
+
+COMPREHENSIVE ANALYSIS:
+├── 📖 CTF_GAME_STATUS_REPORT.md ......... Full 10KB project analysis
+└── 📝 SUBAGENT_COMPLETION_SUMMARY.md .... What subagent did
+
+BACKEND:
+├── 📂 backend/
+│   ├── 📘 README.md ..................... Setup and architecture
+│   ├── 📗 API.md ........................ Complete API documentation
+│   ├── 🚢 DEPLOYMENT_SOLUTION.md ........ Deployment options (Railway, Render, Fly.io)
+│   ├── 🧪 test-db.js .................... Test database connection
+│   ├── 🧪 test-api.sh ................... Test all API endpoints
+│   ├── .env ............................. Environment variables (needs valid credentials)
+│   └── 📂 src/
+│       ├── server.js .................... Main Express server
+│       ├── 📂 routes/ ................... API endpoints
+│       ├── 📂 db/ ....................... Database setup and migrations
+│       └── 📂 services/ ................. Business logic
+
+iOS APP:
+├── 📂 ios-app/
+│   ├── 📱 README.md ..................... iOS setup and architecture
+│   ├── 🔧 NAVIGATION_FIXES.md ........... Recent fixes (Feb 7)
+│   ├── ✨ COMPLETION_SUMMARY.md ......... Feature checklist
+│   ├── 📂 CTFGame/
+│   │   ├── 📂 Views/ .................... SwiftUI views
+│   │   ├── 📂 ViewModels/ ............... Business logic
+│   │   ├── 📂 Models/ ................... Data models
+│   │   └── 📂 Services/ ................. API, WebSocket, Location
+│   └── CTFGame.xcodeproj ................ Xcode project
+
+APP STORE:
+├── 🍎 APP_STORE_SUBMISSION.md ........... TestFlight status and next steps
+├── 📂 legal-pages/
+│   ├── privacy-policy.html .............. Privacy policy (needs hosting)
+│   └── terms-of-service.html ............ Terms of service (needs hosting)
+
+RESEARCH & PLANNING:
+├── 🐰 RABBIT_RESEARCH.md ................ Original game design research
+├── 📄 XCODE_WALKTHROUGH.md .............. Xcode project setup
+├── 🚀 LAUNCH_PAGE_RESEARCH.md ........... Marketing page ideas
+└── 📂 Backend setup docs ................ Various setup guides
+
+DATABASE:
+├── flags.sql ............................ Flag locations (SQL)
+└── backend/src/db/schema.sql ............ Full database schema
+
+DEBUGGING TOOLS (NEW):
+├── 🧪 backend/test-db.js ................ Test database connection
+└── 🧪 backend/test-api.sh ............... Test all API endpoints
+
+
+QUICK COMMANDS:
+===============
+
+Test Database:
+  cd ~/projects/ctf-game/backend && node test-db.js
+
+Test All API Endpoints:
+  cd ~/projects/ctf-game/backend && ./test-api.sh
+
+Run Backend Locally:
+  cd ~/projects/ctf-game/backend && npm run dev
+
+Open iOS App:
+  open ~/projects/ctf-game/ios-app/CTFGame.xcodeproj
+
+View Railway Logs:
+  Go to railway.app → Project → Logs
+
+
+WHAT TO READ BASED ON YOUR GOAL:
+=================================
+
+"I want to fix the database NOW"
+→ START_HERE.md (5 min fix)
+→ IMMEDIATE_FIXES.md (detailed options)
+
+"I want to understand the whole project"
+→ CTF_GAME_STATUS_REPORT.md (comprehensive)
+→ PROJECT_CHECKLIST.md (task list)
+
+"I want to work on the backend"
+→ backend/README.md (setup)
+→ backend/API.md (endpoints)
+
+"I want to work on the iOS app"
+→ ios-app/README.md (setup)
+→ ios-app/NAVIGATION_FIXES.md (recent changes)
+
+"I want to submit to App Store"
+→ APP_STORE_SUBMISSION.md (steps)
+→ legal-pages/ (host these first)
+
+"I want to deploy the backend"
+→ backend/DEPLOYMENT_SOLUTION.md (Railway, Render, Fly.io)
+
+
+PRIORITY READING:
+=================
+
+1. START_HERE.md ........................ 2 minutes
+2. IMMEDIATE_FIXES.md ................... 5 minutes
+3. Run: backend/test-db.js .............. 1 minute
+4. Run: backend/test-api.sh ............. 1 minute
+5. Read based on your next task ......... varies
+
+
+STATUS AS OF FEB 16, 2026:
+===========================
+
+✅ Backend: Deployed and running
+✅ iOS App: Built and in TestFlight
+❌ Database: Connection broken (needs Railway credentials)
+⏸️  Testing: Blocked by database issue
+⏸️  App Store: Ready to submit after testing
+
+Next Step: Fix database (5-30 min)
+Then: Test everything (1-2 hours)
+Then: Ship it! 🚀
